@@ -1,0 +1,1 @@
+Book Search is a simple and practical web application that allows users to search for books using keywords (title, author, or subject) and view key information like title, author, cover image, publication year, description, and preview links. It uses the Google Books API to fetch real-time book data.
