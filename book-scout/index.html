@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Book Scout</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>📚 Book Scout</h1>
+    <input id="query" type="text" placeholder="Search books..." />
+    <button onclick="searchBooks()">Search</button>
+    <div id="results"></div>
+  </div>
+
+  <script>
+    async function searchBooks() {
+      const q = document.getElementById('query').value;
+      const res = await fetch(`/search?q=${q}`);
+      const data = await res.json();
+      const results = document.getElementById('results');
+      results.innerHTML = '';
+      if (!data.items) return results.innerHTML = 'No books found.';
+      data.items.forEach(book => {
+        const info = book.volumeInfo;
+        results.innerHTML += `
+          <div class="book">
+            <h3>${info.title || 'No Title'}</h3>
+            <p>${info.authors ? info.authors.join(', ') : 'No Author'}</p>
+            <img src="${info.imageLinks?.thumbnail || ''}" />
+            <a href="${info.previewLink}" target="_blank">Preview</a>
+          </div>
+        `;
+      });
+    }
+  </script>
+</body>
+</html>
+
