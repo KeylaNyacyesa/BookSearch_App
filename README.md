@@ -81,8 +81,7 @@ sudo service haproxy reload
 
 Screenshot for the load balancing test:
 
-![Load Balancing Test](./screenshots/balance.png)
-
+<img width="603" height="396" alt="Image" src="https://github.com/user-attachments/assets/e95fe3b2-1584-412d-ae40-f29473457cf1" />
 
 
 
