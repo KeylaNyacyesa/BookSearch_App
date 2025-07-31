@@ -1,11 +1,14 @@
 const express = require('express');
 const axios = require('axios');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
-const PORT = 8080;
+const PORT = 3000;
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
+app.use(express.static(path.join(__dirname)));
+
 
 app.get('/search', async (req, res) => {
   const { q } = req.query;
@@ -15,6 +18,11 @@ app.get('/search', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch books' });
   }
+});
+
+// Serve the main page
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => {

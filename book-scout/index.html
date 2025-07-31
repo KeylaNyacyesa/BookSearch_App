@@ -13,27 +13,40 @@
     <div id="results"></div>
   </div>
 
-  <script>
-    async function searchBooks() {
-      const q = document.getElementById('query').value;
-      const res = await fetch(`/search?q=${q}`);
-      const data = await res.json();
-      const results = document.getElementById('results');
-      results.innerHTML = '';
-      if (!data.items) return results.innerHTML = 'No books found.';
-      data.items.forEach(book => {
-        const info = book.volumeInfo;
-        results.innerHTML += `
-          <div class="book">
+ <script>
+  async function searchBooks(defaultQuery = null) {
+    const q = defaultQuery || document.getElementById('query').value;
+    if (!q) return;
+    const API_BASE = window.location.origin;
+    const res = await fetch(`${API_BASE}/search?q=${q}`);
+    const data = await res.json();
+    const results = document.getElementById('results');
+    results.innerHTML = '';
+
+    if (!data.items) {
+      results.innerHTML = 'No books found.';
+      return;
+    }
+
+    data.items.forEach(book => {
+      const info = book.volumeInfo;
+      results.innerHTML += `
+        <div class="book">
+          <img src="${info.imageLinks?.thumbnail || ''}" />
+          <div>
             <h3>${info.title || 'No Title'}</h3>
             <p>${info.authors ? info.authors.join(', ') : 'No Author'}</p>
-            <img src="${info.imageLinks?.thumbnail || ''}" />
             <a href="${info.previewLink}" target="_blank">Preview</a>
           </div>
-        `;
-      });
-    }
-  </script>
+        </div>
+      `;
+    });
+  }
+
+  window.onload = () => {
+    searchBooks('bestsellers'); // or any default search term
+  };
+</script>
 </body>
 </html>
 

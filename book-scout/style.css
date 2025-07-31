@@ -1,22 +1,120 @@
+/* Base styles */
 body {
-  font-family: sans-serif;
-  background: #f4f4f4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   margin: 0;
-  padding: 20px;
-}
-.container {
-  max-width: 700px;
-  margin: auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-}
-.book {
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-}
-img {
-  height: 100px;
+  padding: 40px;
+  color: #333;
 }
 
+/* Container */
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Title */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #4a4a4a;
+}
+
+/* Input field */
+input#query {
+  padding: 12px 18px;
+  width: 60%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-right: 10px;
+  transition: border-color 0.3s;
+}
+
+input#query:focus {
+  outline: none;
+  border-color: #5a67d8;
+}
+
+/* Button */
+button {
+  padding: 12px 20px;
+  background-color: #5a67d8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #434190;
+}
+
+/* Results section */
+#results {
+  margin-top: 30px;
+  text-align: left;
+}
+
+/* Book card */
+.book {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.book img {
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.book h3 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  color: #2d3748;
+}
+
+.book p {
+  margin: 0 0 10px;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.book a {
+  color: #3182ce;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.book a:hover {
+  color: #2b6cb0;
+}
+
+.book {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.book div {
+  flex: 1;
+  min-width: 200px;
+}
+
+
+.book:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
